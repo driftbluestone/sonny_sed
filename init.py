@@ -1,3 +1,3 @@
 from api import permission
 
-permission.create("sed", None)
+permission.create("sed", "Sed", None, True, True, True)
