@@ -10,7 +10,15 @@ class Sed(commands.Cog):
         self.bot = bot
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if message.author.bot: return
+        if message.author.bot:
+            return
+        if message.content.startswith("sed/"):
+            await sed(message)
+    
+    @commands.Cog.listener()
+    async def on_message_edit(self, message: discord.Message):
+        if message.author.bot:
+            return
         if message.content.startswith("sed/"):
             await sed(message)
 
