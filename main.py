@@ -1,3 +1,5 @@
+import importlib
+importlib.reload()
 import re, discord
 from discord.ext import commands
 from api import permission
