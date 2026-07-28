@@ -1,6 +1,5 @@
 import re, discord
-from discord.ext import commands
-from api import permission
+from api import permission, commands
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(Sed(bot=bot))
@@ -23,7 +22,7 @@ class Sed(commands.Cog):
             await sed(message)
 
 async def sed(message: discord.Message):
-    if not await permission.check(message.author.id, "sonny_sed:sed"):
+    if not await permission.check(message.guild.id, message.author.id, "sonny_sed:sed"):
         return
     if message.reference is None:
         replied_message = None
